@@ -13,6 +13,13 @@ public class Task {
     private boolean isDone;
     private int priority;
 
+    public Task(String name, String description, boolean isDone, int priority) {
+        this.name = name;
+        this.description = description;
+        this.isDone = isDone;
+        this.priority = priority;
+    }
+
     public Long getId() {
         return id;
     }
