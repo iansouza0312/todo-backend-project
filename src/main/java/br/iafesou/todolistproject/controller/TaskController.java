@@ -2,8 +2,7 @@ package br.iafesou.todolistproject.controller;
 
 import br.iafesou.todolistproject.model.Task;
 import br.iafesou.todolistproject.service.TaskService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,16 +14,20 @@ public class TaskController {
         this.taskService = taskService;
     }
 
+    @GetMapping
     List<Task> list() {
         return taskService.list();
     }
-    List<Task> create(Task todo) {
+    @PostMapping
+    List<Task> create(@RequestBody Task todo) {
         return taskService.create(todo);
     }
-    List<Task> update(Task todo) {
+    @PutMapping
+    List<Task> update(@RequestBody Task todo) {
         return taskService.update(todo);
     }
-    List<Task> delete(Long id) {
+    @DeleteMapping("{id}")
+    List<Task> delete(@PathVariable("id") Long id) {
         return taskService.delete(id);
     }
 }
