@@ -25,7 +25,8 @@ class TodoListProjectApplicationTests {
 	}
 	@Test
 	void testCreateTaskError() {
-
+		webTestClient.post().uri("/api/tasks").bodyValue(new Task("", "", false, 0)).exchange()
+				.expectStatus().isBadRequest();
 	}
 
 
